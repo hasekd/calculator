@@ -45,10 +45,12 @@ function Calculator() {
         return;
     }
 
-    if (computation % 1 === 0) {
-      setCurrentResult(Math.round(computation).toString());
+    console.log(computation);
+
+    if (computation % 1 !== 0) {
+      setCurrentResult(computation.toFixed(6));
     } else {
-      setCurrentResult(computation.toFixed(6).toString());
+      setCurrentResult(computation.toString());
     }
 
     setChoseOperand("");
@@ -62,11 +64,10 @@ function Calculator() {
   };
 
   const deleteHandler = () => {
-    const newString = currentResult;
-
-    const updatedResult = newString.slice(0, -1);
+    const updatedResult = currentResult.slice(0, -1);
     setCurrentResult(updatedResult);
   };
+
   return (
     <>
       <div className={classes.result}>
